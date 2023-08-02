@@ -7,7 +7,12 @@
           <param name="robot_description" value="$(command 'xacro $(var urdf_path)')" />
      </node>
 
-     <node pkg="my_robot_controller" exec="controller" />
+     <node pkg="my_robot_controller" exec="controller" >
+          <param name="linear_vel_x" value="0.2"/>
+          <param name="angular_yaw" value="1.0"/>
+          <param name="forearm_position" value="0.0"/>
+          <param name="hand_position" value="0.0"/>
+     </node>
 
 
      <include file="$(find-pkg-share gazebo_ros)/launch/gazebo.launch.py" >

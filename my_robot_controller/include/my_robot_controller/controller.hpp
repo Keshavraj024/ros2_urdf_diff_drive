@@ -7,27 +7,28 @@
 
 class Controller : public rclcpp::Node
 {
-    public:
-        Controller();
-    private:
-        /**
-         * @brief publish to /cmd_vel topic at certain frequency
-        */
-        void timerCmdVelCallback();
+public:
+    Controller();
 
-        /**
-         * @brief publish to /set_joint_trajectory topic at certain frequency
-        */
-        void timerTrajectoryCallback();
+private:
+    /**
+     * @brief publish to /cmd_vel topic at certain frequency
+     */
+    void timerCmdVelCallback();
 
-        rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr m_vel_publisher;
-        rclcpp::Publisher<trajectory_msgs::msg::JointTrajectory>::SharedPtr m_trajectory_publisher;
-        rclcpp::TimerBase::SharedPtr m_vel_timer;
-        rclcpp::TimerBase::SharedPtr m_trajectory_timer;
+    /**
+     * @brief publish to /set_joint_trajectory topic at certain frequency
+     */
+    void timerTrajectoryCallback();
 
-
-
-
+    rclcpp::Publisher<geometry_msgs::msg::Twist>::SharedPtr m_vel_publisher;
+    rclcpp::Publisher<trajectory_msgs::msg::JointTrajectory>::SharedPtr m_trajectory_publisher;
+    rclcpp::TimerBase::SharedPtr m_vel_timer;
+    rclcpp::TimerBase::SharedPtr m_trajectory_timer;
+    double m_linear_vel_x;
+    double m_angular_yaw;
+    double m_forearm_position;
+    double m_hand_position;
 };
 
 #endif
