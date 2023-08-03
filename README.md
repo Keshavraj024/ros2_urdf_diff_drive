@@ -42,6 +42,15 @@ The robot has the following parameters defined using `xacro` properties:
 - `cylinder_radius`: The radius of the forearm and hand links (default: 0.02).
 - `cylinder_length`: The length of the forearm and hand links (default: 0.3).
 
+# KalmanFilter
+
+The `KalmanFilter` class is a C++ implementation of the Kalman filter algorithm. It subscribes to Odometry and IMU messages, performs state prediction and measurement update steps, and publishes the filtered Odometry message.
+
+## Dependencies
+
+- `rclcpp`
+- `nav_msgs`
+- `sensor_msgs`
 
 ## Installation
 
@@ -67,4 +76,5 @@ To run, use the following command:
 ```bash
 ros2 launch my_robot_bringup my_robot_gazebo.launch.xml 
 ```
+
 
