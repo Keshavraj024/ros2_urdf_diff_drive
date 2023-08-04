@@ -76,5 +76,6 @@ To run, use the following command:
 ```bash
 ros2 launch my_robot_bringup my_robot_gazebo.launch.xml 
 ```
-
+In the image shown ![Kalman Filter](image.png)
+The image showcases a visual representation of different pose estimate lines using various sensors. The red line, known as "kalman_odom," demonstrates a smooth and accurate pose estimation obtained through a Kalman filter. The blue line, labeled "noisy_odom," portrays a pose affected by noise or uncertainty, resulting in a less precise pose. The pink line represents "imu_measurement," indicating the pose was derived from Inertial Measurement Unit data for measurement update. Lastly, the green line represents "odom_groundtruth," signifying the ground truth pose obtained from odometry data, representing the most accurate pose among the lines depicted in the image.
 

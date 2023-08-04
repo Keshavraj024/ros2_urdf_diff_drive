@@ -25,7 +25,7 @@ void KalmanFilter::odomCallback(const nav_msgs::msg::Odometry &odom)
 {
     m_kalman_odom = odom;
     m_noisy_odom = odom;
-    const auto noisy_odom = odom.twist.twist.angular.z  + 0.1;
+    const auto noisy_odom = odom.twist.twist.angular.z  + m_odom_noise_factor;
     if (m_is_first_odom)
     {
         m_mean =noisy_odom;

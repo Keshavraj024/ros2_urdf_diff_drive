@@ -29,6 +29,7 @@ private:
     nav_msgs::msg::Odometry m_noisy_odom;
     double m_motion_variance;
     double m_meaurement_variance;
+    double m_odom_noise_factor{0.1};
 
     /**
      * @brief Callback function for Odometry messages.
