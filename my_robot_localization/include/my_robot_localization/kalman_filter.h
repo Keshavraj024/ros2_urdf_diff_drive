@@ -17,6 +17,7 @@ private:
     rclcpp::Subscription<nav_msgs::msg::Odometry>::SharedPtr m_odom_sub;
     rclcpp::Subscription<sensor_msgs::msg::Imu>::SharedPtr m_imu_sub;
     rclcpp::Publisher<nav_msgs::msg::Odometry>::SharedPtr m_odom_pub;
+    rclcpp::Publisher<nav_msgs::msg::Odometry>::SharedPtr m_noisy_odom_pub;
 
     double m_mean;
     double m_variance;
@@ -25,6 +26,7 @@ private:
     bool m_is_first_odom;
     double m_motion;
     nav_msgs::msg::Odometry m_kalman_odom;
+    nav_msgs::msg::Odometry m_noisy_odom;
     double m_motion_variance;
     double m_meaurement_variance;
 

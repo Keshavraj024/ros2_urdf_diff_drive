@@ -17,26 +17,33 @@ KalmanFilter::KalmanFilter() : Node("kalman_filter"),
                                                                  std::bind(&KalmanFilter::imuCallback, this, std::placeholders::_1));
 
     m_odom_pub = this->create_publisher<nav_msgs::msg::Odometry>("my_robot_controller/odom_kalman", 10);
+
+    m_noisy_odom_pub = this->create_publisher<nav_msgs::msg::Odometry>("my_robot_controller/nosiy_odom", 10);
 }
 
 void KalmanFilter::odomCallback(const nav_msgs::msg::Odometry &odom)
 {
     m_kalman_odom = odom;
+    m_noisy_odom = odom;
+    const auto noisy_odom = odom.twist.twist.angular.z  + 0.1;
     if (m_is_first_odom)
     {
-        m_mean = odom.twist.twist.angular.z ;
-        m_last_angular_z = odom.twist.twist.angular.z ;
+        m_mean =noisy_odom;
+        m_last_angular_z =noisy_odom;
         m_is_first_odom = false;
         return;
     }
 
+    m_motion =noisy_odom - m_last_angular_z;
     statePrediction();
     measurementUpdate();
-
-    m_motion = odom.twist.twist.angular.z + 0.05 - m_last_angular_z;
-    m_last_angular_z = odom.twist.twist.angular.z ;
+    m_last_angular_z =noisy_odom;
+    
     m_kalman_odom.twist.twist.angular.z = m_mean;
     m_odom_pub->publish(m_kalman_odom);
+    
+    m_noisy_odom.twist.twist.angular.z = noisy_odom;
+    m_noisy_odom_pub->publish(m_noisy_odom);
 }
 
 void KalmanFilter::imuCallback(const sensor_msgs::msg::Imu &imu)
