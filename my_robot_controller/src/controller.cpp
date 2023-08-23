@@ -16,6 +16,8 @@ Controller::Controller() : Node("controller")
     m_trajectory_publisher = this->create_publisher<trajectory_msgs::msg::JointTrajectory>("set_joint_trajectory", 10);
     m_vel_timer = this->create_wall_timer(std::chrono::seconds(1), std::bind(&Controller::timerCmdVelCallback, this));
     m_trajectory_timer = this->create_wall_timer(std::chrono::seconds(2), std::bind(&Controller::timerTrajectoryCallback, this));
+
+    m_params_callback_handle = this->add_on_set_parameters_callback(std::bind(&Controller::paramsCallback, this, std::placeholders::_1));
 }
 
 void Controller::timerCmdVelCallback()
@@ -36,4 +38,34 @@ void Controller::timerTrajectoryCallback()
     point.positions = {m_forearm_position, m_hand_position};
     msg.points.push_back(point);
     m_trajectory_publisher->publish(msg);
+}
+
+rcl_interfaces::msg::SetParametersResult Controller::paramsCallback(const std::vector<rclcpp::Parameter> &params)
+{
+    rcl_interfaces::msg::SetParametersResult result;
+    result.successful = true;
+    result.reason = "success";
+
+    for (const auto &param : params)
+    {
+        if (param.get_name() == "linear_vel_x")
+        {
+            std::cout << " !!!!! " << param.as_double();
+            if (param.as_double() >= -2.0 && param.as_double() <= 2.0)
+            {
+                m_linear_vel_x = param.as_double();
+            }
+            else
+            {
+                result.successful = false;
+                result.reason = "Linear Velocity is out of bounds";
+                return result;
+            }
+        }
+        if (param.get_name() == "angular_yaw")
+        {
+            m_angular_yaw = param.as_double();
+        }
+    }
+    return result;
 }

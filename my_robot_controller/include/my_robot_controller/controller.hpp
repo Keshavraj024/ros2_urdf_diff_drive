@@ -4,6 +4,8 @@
 #include "rclcpp/rclcpp.hpp"
 #include "geometry_msgs/msg/twist.hpp"
 #include "trajectory_msgs/msg/joint_trajectory.hpp"
+#include "rcl_interfaces/msg/set_parameters_result.hpp"
+#include <vector>
 
 class Controller : public rclcpp::Node
 {
@@ -29,6 +31,9 @@ private:
     double m_angular_yaw;
     double m_forearm_position;
     double m_hand_position;
+
+    rcl_interfaces::msg::SetParametersResult paramsCallback(const std::vector<rclcpp::Parameter> &params);
+    OnSetParametersCallbackHandle::SharedPtr m_params_callback_handle;
 };
 
 #endif

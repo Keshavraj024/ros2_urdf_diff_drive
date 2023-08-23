@@ -9,7 +9,7 @@
 
      <node pkg="my_robot_controller" exec="controller">
           <param name="linear_vel_x" value="0.0"/>
-          <param name="angular_yaw" value="0.1"/>
+          <param name="angular_yaw" value="0.0"/>
           <param name="forearm_position" value="0.0"/>
           <param name="hand_position" value="0.0"/>
      </node>

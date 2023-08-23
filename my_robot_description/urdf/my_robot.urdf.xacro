@@ -8,16 +8,16 @@
 
 
     <xacro:include filename="camera.xacro" />
-
-    <xacro:include filename="arm.xacro" />
-    <xacro:include filename="arm_gazebo.xacro" />
+    <!-- <xacro:include filename="arm.xacro" />
+    <xacro:include filename="arm_gazebo.xacro" /> -->
     <xacro:include filename="imu_sensor.xacro" />
     <xacro:include filename="imu_gazebo.xacro" />
+    <xacro:include filename="laser_sensor.xacro" />
     
-    <joint name="base_arm_joint" type="fixed">
+    <!-- <joint name="base_arm_joint" type="fixed">
         <parent link="base_link"/>
         <child link="arm_base_link"/>
         <origin xyz="${base_length / 2.0} 0 ${base_height}" rpy="0 0 0"/>
-    </joint>
+    </joint> -->
 
 </robot>
