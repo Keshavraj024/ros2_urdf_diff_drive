@@ -1,0 +1,6 @@
+<launch>
+    <include file="$(find-pkg-share nav2_bringup)/launch/bringup_launch.py">
+        <arg name="use_sim_time" value="true"/>
+        <arg name="map" value="$(find-pkg-share my_robot_bringup)/maps/new_map.yaml"/>
+    </include>
+</launch>

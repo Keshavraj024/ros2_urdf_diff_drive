@@ -1,7 +1,7 @@
 <launch>
      <let name="urdf_path" value="$(find-pkg-share my_robot_description)/urdf/my_robot.urdf.xacro" />
      <let name="rviz_config_path" value="$(find-pkg-share my_robot_description)/rviz/my_robot.rviz" />
-     <let name="enable_rviz" value="false" />
+     <let name="enable_rviz" value="true" />
 
      <node pkg="robot_state_publisher" exec="robot_state_publisher">
           <param name="robot_description" value="$(command 'xacro $(var urdf_path)')" />
