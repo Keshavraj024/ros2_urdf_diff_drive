@@ -1,0 +1,20 @@
+<launch>
+     <let name="urdf_path" value="$(find-pkg-share drive_bot_description)/urdf/drive_bot.urdf.xacro" />
+     <let name="rviz_config_path" value="$(find-pkg-share drive_bot_description)/rviz/drive_bot.rviz" />
+     <let name="enable_rviz" value="true" />
+
+     <node pkg="robot_state_publisher" exec="robot_state_publisher">
+          <param name="robot_description" value="$(command 'xacro $(var urdf_path)')" />
+     </node>
+
+     <include file="$(find-pkg-share gazebo_ros)/launch/gazebo.launch.py">
+          <arg name="world" value="$(find-pkg-share drive_bot_description)/worlds/drive_bot_world.world" />
+     </include>
+
+     <node pkg="gazebo_ros" exec="spawn_entity.py" output="screen" args="-topic robot_description -entity drive_bot" />
+
+     <group if="$(var enable_rviz)">
+          <node pkg="rviz2" exec="rviz2" output="screen" args="-d $(var rviz_config_path)" />
+     </group>
+
+</launch>
