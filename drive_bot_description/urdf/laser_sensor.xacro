@@ -31,9 +31,9 @@
     </joint>
 
     <gazebo reference = "laser_link">
-        <sensor name="hls_lfcd_lds" type="ray">
+        <sensor name="lds_lfcd_sensor" type="ray">
             <always_on>true</always_on>
-            <visualize>true</visualize>
+            <visualize>false</visualize>
             <pose>0.275 0 0.205 0 0 0</pose>
             <update_rate>5</update_rate>
             <ray>
