@@ -2,6 +2,6 @@
     <include file="$(find-pkg-share nav2_bringup)/launch/bringup_launch.py">
         <arg name="use_sim_time" value="true"/>
         <arg name="map" value="$(find-pkg-share drive_bot_bringup)/maps/drive_bot.yaml"/>
-        <arg name="params_file" value="$(find-pkg-share drive_bot_bringup)/maps/waffle.yaml"/>
+        <arg name="params_file" value="$(find-pkg-share drive_bot_bringup)/config/nav2_params.yaml"/>
     </include>
 </launch>

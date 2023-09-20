@@ -10,11 +10,9 @@ find_package(drive_bot_description REQUIRED)
 
 install(DIRECTORY
     launch
-    DESTINATION share/${PROJECT_NAME}
-)
-
-install(DIRECTORY
+    config
     maps
     DESTINATION share/${PROJECT_NAME}
 )
+
 ament_package()
