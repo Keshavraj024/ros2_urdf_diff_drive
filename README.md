@@ -3,6 +3,9 @@
 ![ROS2](https://img.shields.io/badge/ROS2-%E2%9C%93-brightgreen)
 
 
+https://github.com/Keshavraj024/ros2_urdf_diff_drive/assets/45878628/929047e3-91b6-42af-ab5c-26ed2a06aec2
+
+
 # URDF Robot Description
 
 drive_bot.urdf (Unified Robot Description Format) file that describes a simple robot with a base and wheels.
