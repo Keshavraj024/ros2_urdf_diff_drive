@@ -1,5 +1,4 @@
 # ros2_urdf_diff_drive
-# Controller Node
 
 ![ROS2](https://img.shields.io/badge/ROS2-%E2%9C%93-brightgreen)
 
@@ -68,7 +67,7 @@ The `nav2` launch file is a critical component of the Navigation Stack 2.0 (nav2
 
 - **Map Loading**: The launch file loads the map of the environment in which the robot will navigate.
 
-- **Navigation Goals**: The `nav2` launch file can specify initial navigation goals, enabling the robot to start moving autonomously toward a predefined location upon startup.
+- **Navigation Goals**: Intial pose of the robot can be set using 2D Pose Estimate and goal pose can be set using 2D Goal Pose in rviz.
 
 
 **Usage**
